@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/image/favicon.ico">
+
+</head>
+<body>
+
+    <form class="register-form" action="/user/register/" method="post">
+        {% csrf_token %}
+        <h1>register</h1>
+
+        <div class="txtb">
+            <input type="text" placeholder="请输入用户名" name="username" id="username">
+            <span ></span>
+
+        </div>
+        <div class="txtb">
+            <input type="password" name="pwd" id="pwd"  placeholder="请输入密码">
+            <span ></span>
+
+        </div>
+        <div class="txtb">
+            <input type="password" placeholder="请确定密码" name="cpwd" id="cpwd">
+            <span ></span>
+
+        </div>
+        <div class="txtb">
+            <input type="text" name="email" id="email" placeholder="请输入邮箱">
+            <span ></span>
+
+        </div>
+
+        <input type="submit" class="logbtn" value="Register">
+        <input type="checkbox" name="allow" id="allow">
+        <label>同意用户协议</label>
+        <span class="error_tip2" ></span><br>
+        已有账号？<a href="{% url 'user:login' %}"> 去登陆</a>
+    </form>
+
+
+    <script type="text/javascript">
+        $('.txtb input').on('focus', function(){
+            $(this).addClass('focus');
+
+        });
+        $('.txtb input').on('blur', function(){
+            if($(this.val() == ''))
+            $(this).addClass('blur');
+
+        });
+
+
+    </script>
+
+
+</body>
+</html>
